@@ -51,7 +51,9 @@ jobs:
                     composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction --no-suggest
 
             -   name: Install Pandoc
-                run: sudo apt-get install -y pandoc
+                run: |
+                    sudo apt-get update
+                    sudo apt-get install -y pandoc
 
             -   name: Execute tests
                 run: vendor/bin/phpunit
