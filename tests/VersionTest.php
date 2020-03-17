@@ -10,7 +10,7 @@ class VersionTest extends TestCase
     /** @test */
     public function pandoc_returns_version()
     {
-        $output = (new Pandoc)->version();
+        $output = (new Pandoc)->version(true);
 
         var_dump($output);
         exit();
