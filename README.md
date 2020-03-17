@@ -1,4 +1,4 @@
-# Very short description of the package
+# Pandoc PHP Package
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/ueberdosis/pandoc.svg?style=flat-square)](https://packagist.org/packages/ueberdosis/pandoc)
 [![Build Status](https://img.shields.io/travis/ueberdosis/pandoc/master.svg?style=flat-square)](https://travis-ci.org/ueberdosis/pandoc)
@@ -18,7 +18,7 @@ composer require ueberdosis/pandoc
 ## Usage
 
 ``` php
-// Usage description here
+echo (new \Ueberdosis\Pandoc\Pandoc)->version();
 ```
 
 ### Testing
