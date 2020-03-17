@@ -87,7 +87,7 @@ class Pandoc
             return $output;
         }
 
-        preg_match("/pandoc ([0-9]+\.[0-9]+\.[0-9]+)/", $output, $matches);
+        preg_match("/pandoc ([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)/", $output, $matches);
         list($match, $version) = $matches;
 
         if (!$version) {
