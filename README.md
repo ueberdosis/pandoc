@@ -4,7 +4,7 @@
 [![Build Status](https://github.com/ueberdosis/pandoc/workflows/run-tests/badge.svg)](https://github.com/ueberdosis/pandoc/actions)
 [![Total Downloads](https://img.shields.io/packagist/dt/ueberdosis/pandoc.svg?style=flat-square)](https://packagist.org/packages/ueberdosis/pandoc)
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+If you need to convert files from one markup format into another, pandoc is your swiss-army knife. This package is a PHP wrapper for the command-line tool used for [Alldocs](https://alldocs.app).
 
 ## Installation
 
