@@ -8,6 +8,8 @@ use Symfony\Component\Process\Exception\ProcessFailedException;
 
 class Pandoc
 {
+    protected $input;
+
     protected $inputFile;
 
     protected $from;
@@ -19,6 +21,13 @@ class Pandoc
     public function inputFile($value)
     {
         $this->inputFile = $value;
+
+        return $this;
+    }
+
+    public function input($value)
+    {
+        $this->input = $value;
 
         return $this;
     }
@@ -52,6 +61,10 @@ class Pandoc
             ], $parameters)
         );
 
+        if ($this->input) {
+            $process->setInput($this->input);
+        }
+
         $process->run();
 
         if (!$process->isSuccessful()) {
@@ -63,12 +76,27 @@ class Pandoc
 
     public function run()
     {
-        return $this->execute([$this->inputFile,
-            "--from", "{$this->from}",
-            "--to", "{$this->to}",
+        $parameters = [
             "--standalone",
-            "--output", "{$this->output}",
-        ]);
+        ];
+
+        if ($this->inputFile) {
+            array_push($parameters, $this->inputFile);
+        }
+
+        if ($this->from) {
+            array_push($parameters, "--from", "{$this->from}");
+        }
+
+        if ($this->to) {
+            array_push($parameters, "--to", "{$this->to}");
+        }
+
+        if ($this->output) {
+            array_push($parameters, "--output", "{$this->output}");
+        }
+
+        return $this->execute($parameters);
     }
 
     public function version()

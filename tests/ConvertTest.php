@@ -19,4 +19,16 @@ class ConvertTest extends TestCase
 
         $this->assertTrue(file_exists('tests/temp/example.txt'));
     }
+
+    /** @test */
+    public function pandoc_converts_stdin_to_html()
+    {
+        $output = (new Pandoc)
+            ->from('markdown')
+            ->input("# Test")
+            ->to('html')
+            ->run();
+
+        $this->assertStringContainsString('<h1 id="test">Test</h1>', $output);
+    }
 }
