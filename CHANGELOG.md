@@ -2,6 +2,10 @@
 
 All notable changes to `pandoc` will be documented in this file
 
+## 0.2.0 - 2020-03-20
+
+- changed namespace
+
 ## 0.1.2 - 2020-03-20
 
 - add PandocNotFound exception
