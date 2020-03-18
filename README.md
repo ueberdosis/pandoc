@@ -16,6 +16,60 @@ composer require ueberdosis/pandoc
 
 ## Usage
 
+### Return the converted text
+
+``` php
+$output = (new \Ueberdosis\Pandoc\Pandoc)
+    ->from('markdown')
+    ->input("# Test")
+    ->to('html')
+    ->run();
+```
+
+### Use a file as input and write a file as output
+
+``` php
+(new \Ueberdosis\Pandoc\Pandoc)
+    ->from('markdown')
+    ->inputFile('tests/data/example.md')
+    ->to('plain')
+    ->output('tests/temp/example.txt')
+    ->run();
+```
+
+### Change path to Pandoc
+
+``` php
+new \Ueberdosis\Pandoc\Pandoc([
+    'command' => '/usr/local/bin/pandoc',
+]);
+```
+
+### List available input formats
+
+``` php
+(new \Ueberdosis\Pandoc\Pandoc)->listInputFormats()
+```
+
+### List available output formats
+
+``` php
+(new \Ueberdosis\Pandoc\Pandoc)->listOutputFormats();
+```
+
+### Write a log file
+
+``` php
+echo (new \Ueberdosis\Pandoc\Pandoc)
+    ->from('markdown')
+    ->input("# Markdown")
+    ->to('html')
+    ->log('log.txt')
+    ->run();
+```
+
+### Retrieve Pandoc version
+
 ``` php
 echo (new \Ueberdosis\Pandoc\Pandoc)->version();
 ```
