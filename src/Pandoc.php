@@ -71,7 +71,13 @@ class Pandoc
             throw new ProcessFailedException($process);
         }
 
-        return $process->getOutput();
+        $output = $process->getOutput();
+
+        if ($output === '') {
+            return true;
+        }
+
+        return $output;
     }
 
     public function run()
