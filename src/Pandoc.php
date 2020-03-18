@@ -84,4 +84,18 @@ class Pandoc
 
         return $version;
     }
+
+    public function listInputFormats()
+    {
+        $output = $this->execute(['--list-input-formats']);
+
+        return array_filter(explode("\n", $output));
+    }
+
+    public function listOutputFormats()
+    {
+        $output = $this->execute(['--list-output-formats']);
+
+        return array_filter(explode("\n", $output));
+    }
 }
