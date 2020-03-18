@@ -18,6 +18,8 @@ class Pandoc
 
     protected $output;
 
+    protected $log;
+
     public function inputFile($value)
     {
         $this->inputFile = $value;
@@ -53,13 +55,24 @@ class Pandoc
         return $this;
     }
 
+    public function log($value)
+    {
+        $this->log = $value;
+
+        return $this;
+    }
+
     public function execute(array $parameters)
     {
-        $process = new Process(
-            array_merge([
-                'pandoc'
-            ], $parameters)
-        );
+        $parameters = array_merge([
+            'pandoc'
+        ], $parameters);
+
+        if ($this->log) {
+            array_push($parameters, "--log", "{$this->log}");
+        }
+
+        $process = new Process($parameters);
 
         if ($this->input) {
             $process->setInput($this->input);
