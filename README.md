@@ -19,7 +19,7 @@ composer require ueberdosis/pandoc
 ### Return the converted text
 
 ``` php
-$output = (new \Ueberdosis\Pandoc\Pandoc)
+$output = (new \Pandoc\Pandoc)
     ->from('markdown')
     ->input("# Test")
     ->to('html')
@@ -29,7 +29,7 @@ $output = (new \Ueberdosis\Pandoc\Pandoc)
 ### Use a file as input and write a file as output
 
 ``` php
-(new \Ueberdosis\Pandoc\Pandoc)
+(new \Pandoc\Pandoc)
     ->from('markdown')
     ->inputFile('tests/data/example.md')
     ->to('plain')
@@ -40,7 +40,7 @@ $output = (new \Ueberdosis\Pandoc\Pandoc)
 ### Change path to Pandoc
 
 ``` php
-new \Ueberdosis\Pandoc\Pandoc([
+new \Pandoc\Pandoc([
     'command' => '/usr/local/bin/pandoc',
 ]);
 ```
@@ -48,19 +48,19 @@ new \Ueberdosis\Pandoc\Pandoc([
 ### List available input formats
 
 ``` php
-(new \Ueberdosis\Pandoc\Pandoc)->listInputFormats()
+(new \Pandoc\Pandoc)->listInputFormats()
 ```
 
 ### List available output formats
 
 ``` php
-(new \Ueberdosis\Pandoc\Pandoc)->listOutputFormats();
+(new \Pandoc\Pandoc)->listOutputFormats();
 ```
 
 ### Write a log file
 
 ``` php
-echo (new \Ueberdosis\Pandoc\Pandoc)
+echo (new \Pandoc\Pandoc)
     ->from('markdown')
     ->input("# Markdown")
     ->to('html')
@@ -71,7 +71,7 @@ echo (new \Ueberdosis\Pandoc\Pandoc)
 ### Retrieve Pandoc version
 
 ``` php
-echo (new \Ueberdosis\Pandoc\Pandoc)->version();
+echo (new \Pandoc\Pandoc)->version();
 ```
 
 ### Laravel Facade
@@ -79,7 +79,7 @@ echo (new \Ueberdosis\Pandoc\Pandoc)->version();
 This package includes a Laravel facade for people that like that little bit of syntactic sugar.
 
 ```php
-echo \Ueberdosis\Pandoc\Facades\Pandoc::version();
+echo \Pandoc\Facades\Pandoc::version();
 ```
 
 ### Testing

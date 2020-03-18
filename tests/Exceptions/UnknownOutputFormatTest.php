@@ -1,10 +1,10 @@
 <?php
 
-namespace Ueberdosis\Pandoc\Tests\Exceptions;
+namespace Pandoc\Tests\Exceptions;
 
-use Ueberdosis\Pandoc\Pandoc;
+use Pandoc\Pandoc;
 use PHPUnit\Framework\TestCase;
-use Ueberdosis\Pandoc\Exceptions\UnknownOutputFormat;
+use Pandoc\Exceptions\UnknownOutputFormat;
 
 class UnknownOutputFormatTest extends TestCase
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Ueberdosis\Pandoc\Exceptions;
+namespace Pandoc\Exceptions;
 
 use Exception;
 

@@ -1,12 +1,12 @@
 <?php
 
-namespace Ueberdosis\Pandoc;
+namespace Pandoc;
 
 use Exception;
 use Symfony\Component\Process\Process;
-use Ueberdosis\Pandoc\Exceptions\PandocNotFound;
-use Ueberdosis\Pandoc\Exceptions\UnknownInputFormat;
-use Ueberdosis\Pandoc\Exceptions\UnknownOutputFormat;
+use Pandoc\Exceptions\PandocNotFound;
+use Pandoc\Exceptions\UnknownInputFormat;
+use Pandoc\Exceptions\UnknownOutputFormat;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 
 class Pandoc

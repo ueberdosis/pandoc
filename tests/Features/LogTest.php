@@ -2,7 +2,7 @@
 
 namespace Ueberdosis\Tests\Features;
 
-use Ueberdosis\Pandoc\Pandoc;
+use Pandoc\Pandoc;
 use PHPUnit\Framework\TestCase;
 
 class LogTest extends TestCase

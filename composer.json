@@ -24,12 +24,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Ueberdosis\\Pandoc\\": "src"
+            "Pandoc\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Ueberdosis\\Pandoc\\Tests\\": "tests"
+            "Pandoc\\Tests\\": "tests"
         }
     },
     "scripts": {

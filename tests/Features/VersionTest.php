@@ -1,8 +1,8 @@
 <?php
 
-namespace Ueberdosis\Pandoc\Tests\Features;
+namespace Pandoc\Tests\Features;
 
-use Ueberdosis\Pandoc\Pandoc;
+use Pandoc\Pandoc;
 use PHPUnit\Framework\TestCase;
 
 class VersionTest extends TestCase
