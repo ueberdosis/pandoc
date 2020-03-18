@@ -74,6 +74,14 @@ echo (new \Ueberdosis\Pandoc\Pandoc)
 echo (new \Ueberdosis\Pandoc\Pandoc)->version();
 ```
 
+### Laravel Facade
+
+This package includes a Laravel facade for people that like that little bit of syntactic sugar.
+
+```php
+echo \Ueberdosis\Pandoc\Facades\Pandoc::version();
+```
+
 ### Testing
 
 ``` bash
