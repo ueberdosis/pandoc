@@ -8,17 +8,17 @@ use Symfony\Component\Process\Exception\ProcessFailedException;
 
 class Pandoc
 {
-    protected $file;
+    protected $inputFile;
 
     protected $from;
 
     protected $to;
 
-    protected $output;
+    protected $outputFile;
 
-    public function file($value)
+    public function inputFile($value)
     {
-        $this->file = $value;
+        $this->inputFile = $value;
 
         return $this;
     }
@@ -37,29 +37,23 @@ class Pandoc
         return $this;
     }
 
-    public function output($value)
+    public function outputFile($value)
     {
-        $this->output = $value;
+        $this->outputFile = $value;
 
         return $this;
     }
 
-    public function convert()
+    public function run()
     {
-        // Example: pandoc test1.md -f markdown -t html -s -o test1.html
-        $command = sprintf("pandoc %s -f %s -t %s -s -o %s", $this->file, $this->from, $this->to, $this->output);
-
-        // exec(escapeshellcmd($command), $cmdOutput);
-
-        // return $cmdOutput;
-
         $process = new Process([
-            'pandoc', $this->file,
+            'pandoc', $this->inputFile,
             "-f", "{$this->from}",
             "-t", "{$this->to}",
             "-s",
-            "-o", "{$this->output}",
+            "-o", "{$this->outputFile}",
         ]);
+
         $process->run();
 
         if (!$process->isSuccessful()) {
@@ -69,7 +63,7 @@ class Pandoc
         return $process->getOutput();
     }
 
-    public function version($raw = false)
+    public function version($fullOutput = false)
     {
         $process = new Process([
             'pandoc',
@@ -81,17 +75,17 @@ class Pandoc
             throw new ProcessFailedException($process);
         }
 
-        $output = $process->getOutput();
+        $outputFile = $process->getOutput();
 
-        if ($raw) {
-            return $output;
+        if ($fullOutput) {
+            return $outputFile;
         }
 
-        preg_match("/pandoc ([0-9]+\.[0-9]+\.[0-9]+)/", $output, $matches);
+        preg_match("/pandoc ([0-9]+\.[0-9]+\.[0-9]+)/", $outputFile, $matches);
         list($match, $version) = $matches;
 
         if (!$version) {
-            throw new Exception("Couldn’t find a pandoc version number in the output.");
+            throw new Exception("Couldn’t find a pandoc version number in the outputFile.");
         }
 
         return $version;
