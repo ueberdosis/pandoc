@@ -1,6 +1,6 @@
 <?php
 
-namespace Ueberdosis\Pandoc\Tests;
+namespace Ueberdosis\Pandoc\Tests\Features;
 
 use Ueberdosis\Pandoc\Pandoc;
 use PHPUnit\Framework\TestCase;

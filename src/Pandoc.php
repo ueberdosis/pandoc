@@ -4,6 +4,9 @@ namespace Ueberdosis\Pandoc;
 
 use Exception;
 use Symfony\Component\Process\Process;
+use Ueberdosis\Pandoc\Exceptions\PandocNotFound;
+use Ueberdosis\Pandoc\Exceptions\UnknownInputFormat;
+use Ueberdosis\Pandoc\Exceptions\UnknownOutputFormat;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 
 class Pandoc
@@ -90,6 +93,20 @@ class Pandoc
         $process->run();
 
         if (!$process->isSuccessful()) {
+            $output = $process->getErrorOutput();
+
+            if (preg_match("/Unknown input format/", $output, $matches)) {
+                throw new UnknownInputFormat;
+            }
+
+            if (preg_match("/Unknown output format/", $output, $matches)) {
+                throw new UnknownOutputFormat;
+            }
+
+            if (preg_match("/not found/", $output, $matches)) {
+                throw new PandocNotFound;
+            }
+
             throw new ProcessFailedException($process);
         }
 
