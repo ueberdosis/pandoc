@@ -90,7 +90,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ## Credits
 
-- [Hans Pagel](https://github.com/ueberdosis)
+- [Hans Pagel](https://github.com/hanspagel)
 - [All Contributors](../../contributors)
 
 ## License
