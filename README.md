@@ -48,7 +48,7 @@ new \Ueberdosis\Pandoc\Pandoc([
 ### List available input formats
 
 ``` php
-(new \Ueberdosis\Pandoc\Pandoc)->listInputFormats()
+(new \Ueberdosis\Pandoc\Pandoc)->listInputFormats();
 ```
 
 ### List available output formats
