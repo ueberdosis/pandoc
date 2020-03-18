@@ -48,7 +48,7 @@ new \Pandoc\Pandoc([
 ### List available input formats
 
 ``` php
-(new \Pandoc\Pandoc)->listInputFormats()
+(new \Pandoc\Pandoc)->listInputFormats();
 ```
 
 ### List available output formats
