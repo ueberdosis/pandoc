@@ -14,7 +14,7 @@ class ConvertTest extends TestCase
             ->from('markdown')
             ->inputFile('tests/data/example.md')
             ->to('plain')
-            ->outputFile('tests/temp/example.txt')
+            ->output('tests/temp/example.txt')
             ->run();
 
         $this->assertTrue(file_exists('tests/temp/example.txt'));

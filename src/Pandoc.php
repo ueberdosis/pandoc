@@ -14,7 +14,7 @@ class Pandoc
 
     protected $to;
 
-    protected $outputFile;
+    protected $output;
 
     public function inputFile($value)
     {
@@ -37,22 +37,20 @@ class Pandoc
         return $this;
     }
 
-    public function outputFile($value)
+    public function output($value)
     {
-        $this->outputFile = $value;
+        $this->output = $value;
 
         return $this;
     }
 
-    public function run()
+    public function execute(array $parameters)
     {
-        $process = new Process([
-            'pandoc', $this->inputFile,
-            "-f", "{$this->from}",
-            "-t", "{$this->to}",
-            "-s",
-            "-o", "{$this->outputFile}",
-        ]);
+        $process = new Process(
+            array_merge([
+                'pandoc'
+            ], $parameters)
+        );
 
         $process->run();
 
@@ -63,29 +61,25 @@ class Pandoc
         return $process->getOutput();
     }
 
-    public function version($fullOutput = false)
+    public function run()
     {
-        $process = new Process([
-            'pandoc',
-            '-v',
+        return $this->execute([$this->inputFile,
+            "--from", "{$this->from}",
+            "--to", "{$this->to}",
+            "--standalone",
+            "--output", "{$this->output}",
         ]);
-        $process->run();
+    }
 
-        if (!$process->isSuccessful()) {
-            throw new ProcessFailedException($process);
-        }
+    public function version()
+    {
+        $output = $this->execute(['--version']);
 
-        $outputFile = $process->getOutput();
-
-        if ($fullOutput) {
-            return $outputFile;
-        }
-
-        preg_match("/pandoc ([0-9]+\.[0-9]+\.[0-9]+)/", $outputFile, $matches);
+        preg_match("/pandoc ([0-9]+\.[0-9]+\.[0-9]+)/", $output, $matches);
         list($match, $version) = $matches;
 
         if (!$version) {
-            throw new Exception("Couldn’t find a pandoc version number in the outputFile.");
+            throw new Exception("Couldn’t find a pandoc version number in the output.");
         }
 
         return $version;
