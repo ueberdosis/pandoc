@@ -8,6 +8,10 @@ use Symfony\Component\Process\Exception\ProcessFailedException;
 
 class Pandoc
 {
+    public $config = [
+        'command' => 'pandoc',
+    ];
+
     protected $input;
 
     protected $inputFile;
@@ -19,6 +23,11 @@ class Pandoc
     protected $output;
 
     protected $log;
+
+    public function __construct($config = [])
+    {
+        $this->config = array_merge($this->config, $config);
+    }
 
     public function inputFile($value)
     {
@@ -65,7 +74,7 @@ class Pandoc
     public function execute(array $parameters)
     {
         $parameters = array_merge([
-            'pandoc'
+            $this->config['command'],
         ], $parameters);
 
         if ($this->log) {
