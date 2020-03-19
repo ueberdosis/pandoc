@@ -4,7 +4,7 @@
 [![Build Status](https://github.com/ueberdosis/pandoc/workflows/run-tests/badge.svg)](https://github.com/ueberdosis/pandoc/actions)
 [![Total Downloads](https://img.shields.io/packagist/dt/ueberdosis/pandoc.svg?style=flat-square)](https://packagist.org/packages/ueberdosis/pandoc)
 
-If you need to convert files from one markup format into another, pandoc is your swiss-army knife. This package is a PHP wrapper for pandoc.
+If you need to convert text files from one format to another, pandoc is your swiss-army knife. This package is a PHP wrapper for pandoc.
 
 ## Installation
 
