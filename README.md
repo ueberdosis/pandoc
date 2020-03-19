@@ -82,6 +82,14 @@ This package includes a Laravel facade for people that like that little bit of s
 echo \Pandoc\Facades\Pandoc::version();
 ```
 
+### Exceptions
+
+If something went wrong, the package throws an Exception. There are even a few specific exceptions.
+
+* PandocNotFound
+* UnknownInputFormat
+* UnknownOutputFormat
+
 ### Testing
 
 ``` bash
