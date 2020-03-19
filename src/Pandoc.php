@@ -3,9 +3,11 @@
 namespace Pandoc;
 
 use Exception;
-use Symfony\Component\Process\Process;
 use Pandoc\Exceptions\PandocNotFound;
+use Symfony\Component\Process\Process;
+use Pandoc\Exceptions\InputFileNotFound;
 use Pandoc\Exceptions\UnknownInputFormat;
+use Pandoc\Exceptions\LogFileNotWriteable;
 use Pandoc\Exceptions\UnknownOutputFormat;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 
@@ -108,15 +110,23 @@ class Pandoc
         if (!$process->isSuccessful()) {
             $output = $process->getErrorOutput();
 
-            if (preg_match("/Unknown input format/", $output, $matches)) {
+            if (strpos($output, "pandoc: {$this->inputFile}: openBinaryFile: does not exist") !== false) {
+                throw new InputFileNotFound;
+            }
+
+            if (strpos($output, "pandoc: {$this->log}: openBinaryFile: does not exist") !== false) {
+                throw new LogFileNotWriteable;
+            }
+
+            if (strpos($output, 'Unknown input format') !== false) {
                 throw new UnknownInputFormat;
             }
 
-            if (preg_match("/Unknown output format/", $output, $matches)) {
+            if (strpos($output, 'Unknown output format') !== false) {
                 throw new UnknownOutputFormat;
             }
 
-            if (preg_match("/not found/", $output, $matches)) {
+            if (strpos($output, 'not found') !== false) {
                 throw new PandocNotFound;
             }
 

@@ -84,11 +84,13 @@ echo \Pandoc\Facades\Pandoc::version();
 
 ### Exceptions
 
-If something went wrong, the package throws an Exception. There are even a few specific exceptions.
+If something went wrong, the package throws a generic `\Symfony\Component\Process\Exception\ProcessFailedException`. There are even a few specific exceptions.
 
-* PandocNotFound
-* UnknownInputFormat
-* UnknownOutputFormat
+* \Pandoc\Exceptions\PandocNotFound
+* \Pandoc\Exceptions\InputFileNotFound
+* \Pandoc\Exceptions\UnknownInputFormat
+* \Pandoc\Exceptions\UnknownOutputFormat
+* \Pandoc\Exceptions\LogFileNotWriteable
 
 ### Testing
 
