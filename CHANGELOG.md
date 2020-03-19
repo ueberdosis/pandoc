@@ -2,6 +2,11 @@
 
 All notable changes to `pandoc` will be documented in this file
 
+## 0.3.0 - 2020-03-19
+
+- add LogFileNotWriteable exception
+- add InputFileNotFound exception
+
 ## 0.2.1 - 2020-03-19
 
 - add support for --data-dir (custom templates)
