@@ -161,8 +161,8 @@ class Pandoc
     {
         $output = $this->execute(['--version']);
 
-        preg_match("/pandoc ([0-9]+\.[0-9]+\.[0-9]+)/", $output, $matches);
-        list($match, $version) = $matches;
+        preg_match("/(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*)?(\+[0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*)?/", $output, $matches);
+        list($version) = $matches;
 
         if (!$version) {
             throw new Exception("Couldn’t find a pandoc version number in the output.");
