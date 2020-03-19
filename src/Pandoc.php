@@ -27,6 +27,8 @@ class Pandoc
 
     protected $log;
 
+    protected $dataDir;
+
     public function __construct($config = [])
     {
         $this->config = array_merge($this->config, $config);
@@ -74,6 +76,13 @@ class Pandoc
         return $this;
     }
 
+    public function dataDir($value)
+    {
+        $this->dataDir = $value;
+
+        return $this;
+    }
+
     public function execute(array $parameters)
     {
         $parameters = array_merge([
@@ -82,6 +91,10 @@ class Pandoc
 
         if ($this->log) {
             array_push($parameters, "--log", "{$this->log}");
+        }
+
+        if ($this->dataDir) {
+            array_push($parameters, "--data-dir", "{$this->dataDir}");
         }
 
         $process = new Process($parameters);
