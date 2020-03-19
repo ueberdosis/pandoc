@@ -4,7 +4,7 @@
 [![Build Status](https://github.com/ueberdosis/pandoc/workflows/run-tests/badge.svg)](https://github.com/ueberdosis/pandoc/actions)
 [![Total Downloads](https://img.shields.io/packagist/dt/ueberdosis/pandoc.svg?style=flat-square)](https://packagist.org/packages/ueberdosis/pandoc)
 
-If you need to convert text files from one format to another, pandoc is your swiss-army knife. This package is a PHP wrapper for pandoc.
+If you need to convert text files from one format to another, [pandoc](https://pandoc.org/) is your swiss-army knife. This package is a PHP wrapper for pandoc.
 
 ## Installation
 
@@ -13,6 +13,19 @@ You can install the package via composer:
 ```bash
 composer require ueberdosis/pandoc
 ```
+
+This package is a wrapper for the command-line tool pandoc. Don’t forget to install pandoc. Here is an example for Ubuntu:
+
+```bash
+sudo apt-get update
+sudo apt-get install -y wget
+sudo mkdir -p /usr/src/pandoc
+cd /usr/src/pandoc
+sudo wget https://github.com/jgm/pandoc/releases/download/2.9.2/pandoc-2.9.2-1-amd64.deb
+sudo dpkg -i pandoc-2.9.2-1-amd64.deb
+```
+
+[More examples are available in the pandoc documentation](https://pandoc.org/installing.html)
 
 ## Usage
 
