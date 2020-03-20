@@ -113,6 +113,7 @@ If something went wrong, the package throws a generic `\Symfony\Component\Proces
 * \Pandoc\Exceptions\UnknownInputFormat
 * \Pandoc\Exceptions\UnknownOutputFormat
 * \Pandoc\Exceptions\LogFileNotWriteable
+* \Pandoc\Exceptions\BadMethodCall
 
 ### Testing
 

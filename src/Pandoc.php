@@ -4,6 +4,7 @@ namespace Pandoc;
 
 use Exception;
 use Illuminate\Support\Str;
+use Pandoc\Exceptions\BadMethodCall;
 use Pandoc\Exceptions\PandocNotFound;
 use Symfony\Component\Process\Process;
 use Pandoc\Exceptions\InputFileNotFound;
@@ -198,22 +199,42 @@ class Pandoc
 
     public function __call($method, $args)
     {
-        if (Str::startsWith($method, 'from') && in_array($input = strtolower(Str::after($method, 'from')), $this->listInputFormats())) {
-            return tap($this->from($input), function () use ($args) {
-                if (! empty($args)) {
-                    $this->input(...$args);
-                }
-            });
+        $stringsStartsWithFrom = strpos($method, 'from') === 0;
+        $desiredInputFormat = strtolower(
+            array_reverse(explode('from', $method, 2))[0]
+        );
+        $availableInputFormats = $this->listInputFormats();
+
+        if ($stringsStartsWithFrom && in_array($desiredInputFormat, $availableInputFormats)) {
+            $this->from($desiredInputFormat);
+
+            if (! empty($args)) {
+                $this->input(...$args);
+            }
+
+            return $this;
         }
 
-        if (Str::startsWith($method, 'to') && in_array($output = strtolower(Str::after($method, 'to')), $this->listOutputFormats())) {
-            return tap($this->to($output), function () use ($args) {
-                if (! empty($args)) {
-                    $this->output(...$args);
-                }
-            });
+        $stringStartsWithTo = strpos($method, 'to') === 0;
+        $desiredOutputFormat = strtolower(
+            array_reverse(explode('to', $method, 2))[0]
+        );
+        $availableOutputFormats = $this->listOutputFormats();
+
+        if ($stringStartsWithTo && in_array($desiredOutputFormat, $availableOutputFormats)) {
+            $this->to($desiredOutputFormat);
+
+            if (! empty($args)) {
+                $this->output(...$args);
+            }
+
+            return $this;
         }
 
-        static::throwBadMethodCallException($method);
+        throw new BadMethodCall(sprintf(
+            'Call to undefined method %s::%s()',
+            get_class($this),
+            $method
+        ));
     }
 }
