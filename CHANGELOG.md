@@ -6,6 +6,7 @@ All notable changes to `pandoc` will be documented in this file
 
 - add magic from method (e. g. ->fromMarkdown()))
 - add magic to method (e. g. ->toHtml()))
+- add BadMethodCall exception
 
 ## 0.3.0 - 2020-03-19
 
