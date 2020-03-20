@@ -29,7 +29,7 @@ sudo dpkg -i pandoc-2.9.2-1-amd64.deb
 
 ## Usage
 
-### Return the converted text
+### Return the converted text as string
 
 ``` php
 $output = (new \Pandoc\Pandoc)
