@@ -3,7 +3,6 @@
 namespace Pandoc;
 
 use Exception;
-use Illuminate\Support\Str;
 use Pandoc\Exceptions\BadMethodCall;
 use Pandoc\Exceptions\PandocNotFound;
 use Symfony\Component\Process\Process;
