@@ -2,6 +2,11 @@
 
 All notable changes to `pandoc` will be documented in this file
 
+## 0.4.0 - 2020-03-20
+
+- add magic from method (e. g. ->fromMarkdown()))
+- add magic to method (e. g. ->toHtml()))
+
 ## 0.3.0 - 2020-03-19
 
 - add LogFileNotWriteable exception
