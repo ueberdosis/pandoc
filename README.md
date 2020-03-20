@@ -34,7 +34,7 @@ sudo dpkg -i pandoc-2.9.2-1-amd64.deb
 ``` php
 $output = (new \Pandoc\Pandoc)
     ->from('markdown')
-    ->input("# Test")
+    ->input('# Test')
     ->to('html')
     ->run();
 ```
@@ -75,7 +75,7 @@ new \Pandoc\Pandoc([
 ``` php
 echo (new \Pandoc\Pandoc)
     ->from('markdown')
-    ->input("# Markdown")
+    ->input('# Markdown')
     ->to('html')
     ->log('log.txt')
     ->run();
@@ -85,6 +85,15 @@ echo (new \Pandoc\Pandoc)
 
 ``` php
 echo (new \Pandoc\Pandoc)->version();
+```
+
+### Use magic methods to make calls shorter
+
+``` php
+$output = (new \Pandoc\Pandoc)
+    ->fromMarkdown('# Test')
+    ->toHtml('tests/temp/example.txt')
+    ->run();
 ```
 
 ### Laravel Facade
@@ -122,6 +131,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 ## Credits
 
 - [Hans Pagel](https://github.com/hanspagel)
+- [Miguel Piedrafita](https://github.com/m1guelpf)
 - [All Contributors](../../contributors)
 
 ## License
