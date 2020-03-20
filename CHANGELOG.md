@@ -2,6 +2,10 @@
 
 All notable changes to `pandoc` will be documented in this file
 
+## 0.5.0 - 2020-03-20
+
+- add symfony/process executable finder
+
 ## 0.4.0 - 2020-03-20
 
 - add magic from method (e. g. ->fromMarkdown()))
