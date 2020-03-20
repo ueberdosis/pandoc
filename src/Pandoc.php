@@ -10,13 +10,12 @@ use Pandoc\Exceptions\InputFileNotFound;
 use Pandoc\Exceptions\UnknownInputFormat;
 use Pandoc\Exceptions\LogFileNotWriteable;
 use Pandoc\Exceptions\UnknownOutputFormat;
+use Symfony\Component\Process\ExecutableFinder;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 
 class Pandoc
 {
-    public $config = [
-        'command' => 'pandoc',
-    ];
+    public $config;
 
     protected $input;
 
@@ -34,7 +33,9 @@ class Pandoc
 
     public function __construct($config = [])
     {
-        $this->config = array_merge($this->config, $config);
+        $this->config = array_merge([
+            'command' => (new ExecutableFinder)->find('pandoc', 'pandoc'),
+        ], $config);
     }
 
     public function inputFile($value)
