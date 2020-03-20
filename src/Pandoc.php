@@ -4,7 +4,6 @@ namespace Pandoc;
 
 use Exception;
 use Illuminate\Support\Str;
-use Illuminate\Support\Traits\ForwardsCalls;
 use Pandoc\Exceptions\PandocNotFound;
 use Symfony\Component\Process\Process;
 use Pandoc\Exceptions\InputFileNotFound;
@@ -15,8 +14,6 @@ use Symfony\Component\Process\Exception\ProcessFailedException;
 
 class Pandoc
 {
-    use ForwardsCalls;
-
     public $config = [
         'command' => 'pandoc',
     ];
@@ -202,7 +199,7 @@ class Pandoc
     public function __call($method, $args)
     {
         if (Str::startsWith($method, 'from') && in_array($input = strtolower(Str::after($method, 'from')), $this->listInputFormats())) {
-            return tap($this->from($input), function() use($args) {
+            return tap($this->from($input), function () use ($args) {
                 if (! empty($args)) {
                     $this->input(...$args);
                 }
@@ -210,7 +207,7 @@ class Pandoc
         }
 
         if (Str::startsWith($method, 'to') && in_array($output = strtolower(Str::after($method, 'to')), $this->listOutputFormats())) {
-            return tap($this->to($output), function() use($args) {
+            return tap($this->to($output), function () use ($args) {
                 if (! empty($args)) {
                     $this->output(...$args);
                 }
