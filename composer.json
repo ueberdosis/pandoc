@@ -5,6 +5,12 @@
         "ueberdosis",
         "pandoc"
     ],
+    "funding": [
+        {
+            "type": "github",
+            "url": "https://github.com/sponsors/ueberdosis/"
+        }
+    ],
     "homepage": "https://github.com/ueberdosis/pandoc",
     "license": "MIT",
     "type": "library",
