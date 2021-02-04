@@ -3,7 +3,7 @@
 If you need to convert text files from one format to another, [pandoc](https://pandoc.org/) is your swiss-army knife. This package is a PHP wrapper for pandoc.
 
 [![](https://img.shields.io/packagist/v/ueberdosis/pandoc.svg)](https://packagist.org/packages/ueberdosis/pandoc)
-[![Integrate](https://github.com/ueberdosis/pandoc/workflows/Integrate/badge.svg?branch=main)](https://github.com/ueberdosis/pandoc/actions)
+[![Integrate](https://github.com/ueberdosis/pandoc/workflows/run-tests/badge.svg?branch=main)](https://github.com/ueberdosis/pandoc/actions)
 [![](https://img.shields.io/packagist/dt/ueberdosis/pandoc.svg)](https://packagist.org/packages/ueberdosis/pandoc)
 [![Sponsor](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub)](https://github.com/sponsors/ueberdosis)
 
