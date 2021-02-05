@@ -31,7 +31,7 @@ class Pandoc
 
     protected $dataDir;
 
-    protected $workDir;
+    protected $cwd;
 
     public function __construct($config = [])
     {
@@ -89,9 +89,9 @@ class Pandoc
         return $this;
     }
 
-    public function workDir($value)
+    public function cwd($value)
     {
-        $this->workDir = $value;
+        $this->cwd = $value;
 
         return $this;
     }
@@ -112,8 +112,8 @@ class Pandoc
 
         $process = new Process($parameters);
 
-        if ($this->workDir) {
-            $process->setWorkingDirectory($workDir);
+        if ($this->cwd) {
+            $process->setWorkingDirectory($cwd);
         }
         
         if ($this->input) {
