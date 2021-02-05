@@ -58,6 +58,12 @@ new \Pandoc\Pandoc([
 ]);
 ```
 
+### Change working directory
+
+``` php
+(new \Pandoc\Pandoc)->cwd('/tmp/pandoc/');
+```
+
 ### List available input formats
 
 ``` php
