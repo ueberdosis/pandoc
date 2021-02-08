@@ -31,6 +31,8 @@ class Pandoc
 
     protected $dataDir;
 
+    protected $cwd;
+
     public function __construct($config = [])
     {
         $this->config = array_merge([
@@ -87,6 +89,13 @@ class Pandoc
         return $this;
     }
 
+    public function cwd($value)
+    {
+        $this->cwd = $value;
+
+        return $this;
+    }
+    
     public function execute(array $parameters = [])
     {
         $parameters = array_merge([
@@ -103,6 +112,10 @@ class Pandoc
 
         $process = new Process($parameters);
 
+        if ($this->cwd) {
+            $process->setWorkingDirectory($cwd);
+        }
+        
         if ($this->input) {
             $process->setInput($this->input);
         }
