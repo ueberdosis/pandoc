@@ -26,11 +26,13 @@ class Pandoc
     protected $to;
 
     protected $output;
-
+    
     protected $log;
 
     protected $dataDir;
-
+    
+    protected $cwd;
+    
     protected $options;
 
     public function __construct($config = [])
@@ -99,6 +101,13 @@ class Pandoc
 
         return $this;
     }
+
+    public function cwd($value)
+    {
+        $this->cwd = $value;
+
+        return $this;
+    }
     
     public function execute(array $parameters = [])
     {
@@ -118,6 +127,10 @@ class Pandoc
 
         $process = new Process($parameters);
 
+        if ($this->cwd) {
+            $process->setWorkingDirectory($cwd);
+        }
+        
         if ($this->input) {
             $process->setInput($this->input);
         }
