@@ -31,11 +31,15 @@ class Pandoc
 
     protected $dataDir;
 
+    protected $options;
+
     public function __construct($config = [])
     {
         $this->config = array_merge([
             'command' => (new ExecutableFinder)->find('pandoc', 'pandoc'),
         ], $config);
+
+        $this->options = [];
     }
 
     public function inputFile($value)
@@ -73,9 +77,17 @@ class Pandoc
         return $this;
     }
 
+    public function option($name, $value = false)
+    {
+        $this->options[$name] = $value;
+
+        return $this;
+    }
+
     public function log($value)
     {
         $this->log = $value;
+        $this->option("log", $value);
 
         return $this;
     }
@@ -83,22 +95,25 @@ class Pandoc
     public function dataDir($value)
     {
         $this->dataDir = $value;
+        $this->option("data-dir", $value);
 
         return $this;
     }
-
+    
     public function execute(array $parameters = [])
     {
         $parameters = array_merge([
             $this->config['command'],
         ], $parameters);
 
-        if ($this->log) {
-            array_push($parameters, "--log", "{$this->log}");
-        }
-
-        if ($this->dataDir) {
-            array_push($parameters, "--data-dir", "{$this->dataDir}");
+        if (!empty($this->options)) {
+            foreach($this->options as $name => $value) {
+                if($value !== false) {
+                    array_push($parameters, "--{$name}", $value);
+                } else {
+                    array_push($parameters, "--{$name}");
+                }
+            }
         }
 
         $process = new Process($parameters);
