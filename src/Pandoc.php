@@ -108,6 +108,28 @@ class Pandoc
 
         return $this;
     }
+
+    /* Convenience wrappers around option() */
+    public function columns($value)
+    {
+        $this->option('columns', $value);
+
+        return $this;
+    }
+    
+    public function tocDepth($value)
+    {
+        $this->option('toc-depth', $value);
+
+        return $this;
+    }
+    
+    public function standalone()
+    {
+        $this->option('standalone');
+
+        return $this;
+    }
     
     public function execute(array $parameters = [])
     {
