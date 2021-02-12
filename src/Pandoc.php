@@ -26,13 +26,13 @@ class Pandoc
     protected $to;
 
     protected $output;
-    
+
     protected $log;
 
     protected $dataDir;
-    
+
     protected $cwd;
-    
+
     protected $options;
 
     public function __construct($config = [])
