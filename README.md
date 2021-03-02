@@ -103,6 +103,19 @@ $output = (new \Pandoc\Pandoc)
     ->run();
 ```
 
+### Pass options to Pandoc
+
+``` php
+echo (new \Pandoc\Pandoc)
+    ->fromMarkdown('# Test')
+    ->toHtml('tests/temp/example.txt')
+    ->option('fail-if-warnings')
+    ->option('data-dir', './tmp')
+    ->run();
+```
+
+See https://pandoc.org/MANUAL.html for a full list of available options
+
 ### Laravel Facade
 
 This package includes a Laravel facade for people that like that little bit of syntactic sugar.
