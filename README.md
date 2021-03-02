@@ -20,8 +20,8 @@ sudo apt-get update
 sudo apt-get install -y wget
 sudo mkdir -p /usr/src/pandoc
 cd /usr/src/pandoc
-sudo wget https://github.com/jgm/pandoc/releases/download/2.9.2/pandoc-2.9.2-1-amd64.deb
-sudo dpkg -i pandoc-2.9.2-1-amd64.deb
+sudo wget https://github.com/jgm/pandoc/releases/download/2.11.4/pandoc-2.11.4-1-amd64.deb
+sudo dpkg -i pandoc-2.11.4-1-amd64.deb
 ```
 
 [More examples are available in the pandoc documentation](https://pandoc.org/installing.html)
