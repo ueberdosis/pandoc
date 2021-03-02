@@ -1,5 +1,4 @@
 # Pandoc PHP Package
-
 [![](https://img.shields.io/packagist/v/ueberdosis/pandoc.svg)](https://packagist.org/packages/ueberdosis/pandoc)
 [![Integrate](https://github.com/ueberdosis/pandoc/workflows/run-tests/badge.svg?branch=main)](https://github.com/ueberdosis/pandoc/actions)
 [![](https://img.shields.io/packagist/dt/ueberdosis/pandoc.svg)](https://packagist.org/packages/ueberdosis/pandoc)
@@ -8,7 +7,6 @@
 If you need to convert text files from one format to another, [pandoc](https://pandoc.org/) is your swiss-army knife. This package is a PHP wrapper for pandoc.
 
 ## Installation
-
 You can install the package via composer:
 
 ```bash
@@ -31,8 +29,7 @@ sudo dpkg -i pandoc-2.9.2-1-amd64.deb
 ## Usage
 
 ### Return the converted text as string
-
-``` php
+```php
 $output = (new \Pandoc\Pandoc)
     ->from('markdown')
     ->input('# Test')
@@ -41,8 +38,7 @@ $output = (new \Pandoc\Pandoc)
 ```
 
 ### Use a file as input and write a file as output
-
-``` php
+```php
 (new \Pandoc\Pandoc)
     ->from('markdown')
     ->inputFile('tests/data/example.md')
@@ -52,34 +48,29 @@ $output = (new \Pandoc\Pandoc)
 ```
 
 ### Change path to Pandoc
-
-``` php
+```php
 new \Pandoc\Pandoc([
     'command' => '/usr/local/bin/pandoc',
 ]);
 ```
 
 ### Change working directory
-
-``` php
+```php
 (new \Pandoc\Pandoc)->cwd('/tmp/pandoc/');
 ```
 
 ### List available input formats
-
-``` php
+```php
 (new \Pandoc\Pandoc)->listInputFormats();
 ```
 
 ### List available output formats
-
-``` php
+```php
 (new \Pandoc\Pandoc)->listOutputFormats();
 ```
 
 ### Write a log file
-
-``` php
+```php
 echo (new \Pandoc\Pandoc)
     ->from('markdown')
     ->input('# Markdown')
@@ -89,14 +80,12 @@ echo (new \Pandoc\Pandoc)
 ```
 
 ### Retrieve Pandoc version
-
-``` php
+```php
 echo (new \Pandoc\Pandoc)->version();
 ```
 
 ### Use magic methods to make calls shorter
-
-``` php
+```php
 $output = (new \Pandoc\Pandoc)
     ->fromMarkdown('# Test')
     ->toHtml('tests/temp/example.txt')
@@ -104,8 +93,7 @@ $output = (new \Pandoc\Pandoc)
 ```
 
 ### Pass options to Pandoc
-
-``` php
+```php
 echo (new \Pandoc\Pandoc)
     ->fromMarkdown('# Test')
     ->toHtml('tests/temp/example.txt')
@@ -117,7 +105,6 @@ echo (new \Pandoc\Pandoc)
 See https://pandoc.org/MANUAL.html for a full list of available options
 
 ### Laravel Facade
-
 This package includes a Laravel facade for people that like that little bit of syntactic sugar.
 
 ```php
@@ -125,7 +112,6 @@ echo \Pandoc\Facades\Pandoc::version();
 ```
 
 ### Exceptions
-
 If something went wrong, the package throws a generic `\Symfony\Component\Process\Exception\ProcessFailedException`. There are even a few specific exceptions.
 
 * \Pandoc\Exceptions\PandocNotFound
@@ -136,13 +122,11 @@ If something went wrong, the package throws a generic `\Symfony\Component\Proces
 * \Pandoc\Exceptions\BadMethodCall
 
 ### Testing
-
 ``` bash
 composer test
 ```
 
 ### Changelog
-
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
 
 ## Contributing
