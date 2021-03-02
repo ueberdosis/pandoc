@@ -116,21 +116,21 @@ class Pandoc
 
         return $this;
     }
-    
+
     public function tocDepth($value)
     {
         $this->option('toc-depth', $value);
 
         return $this;
     }
-    
+
     public function standalone()
     {
         $this->option('standalone');
 
         return $this;
     }
-    
+
     public function execute(array $parameters = [])
     {
         $parameters = array_merge([
@@ -138,8 +138,8 @@ class Pandoc
         ], $parameters);
 
         if (!empty($this->options)) {
-            foreach($this->options as $name => $value) {
-                if($value !== false) {
+            foreach ($this->options as $name => $value) {
+                if ($value !== false) {
                     array_push($parameters, "--{$name}", $value);
                 } else {
                     array_push($parameters, "--{$name}");
@@ -152,7 +152,7 @@ class Pandoc
         if ($this->cwd) {
             $process->setWorkingDirectory($cwd);
         }
-        
+
         if ($this->input) {
             $process->setInput($this->input);
         }
