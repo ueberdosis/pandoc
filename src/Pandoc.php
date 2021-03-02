@@ -150,7 +150,7 @@ class Pandoc
         $process = new Process($parameters);
 
         if ($this->cwd) {
-            $process->setWorkingDirectory($cwd);
+            $process->setWorkingDirectory($this->cwd);
         }
 
         if ($this->input) {
