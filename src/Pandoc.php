@@ -89,7 +89,7 @@ class Pandoc
     public function log($value)
     {
         $this->log = $value;
-        $this->option("log", $value);
+        $this->option('log', $value);
 
         return $this;
     }
@@ -97,7 +97,7 @@ class Pandoc
     public function dataDir($value)
     {
         $this->dataDir = $value;
-        $this->option("data-dir", $value);
+        $this->option('data-dir', $value);
 
         return $this;
     }
@@ -197,7 +197,7 @@ class Pandoc
     public function run()
     {
         $parameters = [
-            "--standalone",
+            '--standalone',
         ];
 
         if ($this->inputFile) {
@@ -205,15 +205,15 @@ class Pandoc
         }
 
         if ($this->from) {
-            array_push($parameters, "--from", "{$this->from}");
+            array_push($parameters, '--from', "{$this->from}");
         }
 
         if ($this->to) {
-            array_push($parameters, "--to", "{$this->to}");
+            array_push($parameters, '--to', "{$this->to}");
         }
 
         if ($this->output) {
-            array_push($parameters, "--output", "{$this->output}");
+            array_push($parameters, '--output', "{$this->output}");
         }
 
         return $this->execute($parameters);
@@ -227,7 +227,7 @@ class Pandoc
         list($version) = $matches;
 
         if (!$version) {
-            throw new Exception("Couldn’t find a pandoc version number in the output.");
+            throw new Exception('Couldn’t find a pandoc version number in the output.');
         }
 
         return $version;
