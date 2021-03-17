@@ -178,7 +178,7 @@ class Pandoc
                 throw new UnknownOutputFormat;
             }
 
-            if (strpos($output, 'not found') !== false) {
+            if (strpos($output, ': not found') !== false) {
                 throw new PandocNotFound;
             }
 
