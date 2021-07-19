@@ -40,7 +40,7 @@ jobs:
                     key: php-extensions-cache-v1
 
             -   name: Setup PHP
-                uses: shivammathur/setup-php@2.11.0
+                uses: shivammathur/setup-php@2.12.0
                 with:
                     php-version: ${{ matrix.php }}
                     extensions: ${{ env.extensions }}
