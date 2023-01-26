@@ -198,6 +198,7 @@ class Pandoc
     {
         $parameters = [
             '--standalone',
+            '--sandbox',
         ];
 
         if ($this->inputFile) {
