@@ -224,7 +224,7 @@ class Pandoc
     {
         $output = $this->execute(['--version']);
 
-        preg_match("(?:(\d+)\.)?(?:(\d+)\.)?(?:(\d+)\.\d+)", $output, $matches);
+        preg_match("~^.*\K\d(?<![a-z\d.].)\d*(?:\.\d+)*+~mi", $output, $matches);
         list($version) = $matches;
 
         if (!$version) {
