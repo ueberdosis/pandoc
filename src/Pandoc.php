@@ -19,6 +19,8 @@ class Pandoc
 
     protected $input;
 
+    protected $standalone = true;
+
     protected $inputFile;
 
     protected $from;
@@ -127,6 +129,14 @@ class Pandoc
     public function standalone()
     {
         $this->option('standalone');
+        $this->standalone = true;
+
+        return $this;
+    }
+
+    public function noStandalone()
+    {
+        $this->standalone = false;
 
         return $this;
     }
@@ -197,9 +207,12 @@ class Pandoc
     public function run()
     {
         $parameters = [
-            '--standalone',
             '--sandbox',
         ];
+
+        if ($this->standalone) {
+            array_push($parameters, '--standalone');
+        }
 
         if ($this->inputFile) {
             array_push($parameters, $this->inputFile);
